@@ -98,7 +98,7 @@
         <div class="introduction">
             <!--div class="logo"><img src="imgs/logoblanche.png"></div -->
             <h1>Groupe<span>AIMES</span></h1>
-            <p>Salut</p>
+            <p>Administrateurs Systèmes</p>
         </div>
     </div>
     <!-- Fin Landing Page -->
@@ -108,10 +108,10 @@
         <div class="about">
             <div class="bloc">
                 <h2>Qui sommes-nous</h2>
-                <p>On travaille actuellement sur un projet de déploiement d'une application web sur le cloud Azure pour le compte de l'école IPI, qui a pour but de:<br>
-                   - Montrer l'organisation et le travail en équipe.<br>
-                   - Justifier nos choix d'outils.<br>
-                   - Utiliser le plus de notions possibles, de connaissances vues au cours de la formation.<br>
+                <p>On travaille actuellement sur un projet de déploiement d'une application web sur le cloud Azure:<br>
+                   - Gestion de l'organisation et du travail en équipe.<br>
+                   - Collaboration au sein de l'équipe à l'aide des outils Teams (réunions), GitHub (mise à disposition des ressources) et trello (synchronisation et suivi de la progression).<br>
+                   - Utilisation d'un maximum de connaissances, vues au cours de notre formation.<br>
                 </p>
             </div>
             <div class="image">
@@ -167,8 +167,8 @@
                 <div class="left">
                     <div class="content">
                         <h3>Trello</h3>
-                        <h4>Création un compte.</h4>
-                        <p>Affecetr les tâches aux personnes</p>
+                        <h4>Création d'un compte</h4>
+                        <p>Affecter les tâches aux personnes présentées dans des <a href="https://trello.com/b/8tH17Wn2/d%C3%A9ployer-un-site-web-sur-le-cloud" style="text-decoration: none"; target="_blank">Tableaux</a></p>
                         
                     </div>    
                 </div>
@@ -177,8 +177,9 @@
                 <div class="right">
                     <div class="content">
                         <h3>Méthode Agile</h3>
-                        <h4>...</h4>
-                        <p>...</p>
+                        <h4>Améliorer la productivité de l'équipe à l'aide de méthode Scrum</h4>
+                        <p>o Collaboration organisée de l'équipe, autour du besoin client ce qui nous permet de répondre plus vite aux demandes.</p>
+                        <p>o Un brainstorming était effectué avant chaque réunion afin de mettre à jour nos idées, partager nos points bloquants et permettre de s'entraider pour les résoudre.</p>
                     </div>    
                 </div>
 
@@ -187,9 +188,9 @@
                 <div class="left">
                     <div class="content">
                         <h3>GitHub</h3>
-                        <h4>Création un compte pro .. </h4>
-                        <p>o Créer un compte GitHub (compte ipi)<br>
-                           o Création un répertoire privé sous le nom <a href="https://github.com/soukram/Projet_Groupe4.git" style="text-decoration: none"; target="_blank">Projet_Group4</a> puis ajouter les collaborateurs concernés.
+                        <h4>Créer un compte et ajouter les composants nécessaires</h4>
+                        <p>o Création d'un compte GitHub.<br>
+                           o Création d'un répertoire privé sous le nom <a href="https://github.com/imenediabi/aimesalpes.git" style="text-decoration: none"; target="_blank">AimesAlpes</a> puis ajouter les collaborateurs concernés.
                         </p>
                     </div>    
                 </div>
@@ -198,9 +199,9 @@
                 <div class="right">
                     <div class="content">
                         <h3>Visual studio code + Git Bash</h3>
-                        <h4>Deux outils pour coder et monter sur GitHub</h4>
-                        <p>o Installation <a href="https://gitforwindows.org/" style="text-decoration: none"; target="_blank">Git Bash</a><br> 
-                           o Installation de Git sur vscode<br>o Installation les extensions Git Lien + Git Graph
+                        <h4>Deux outils pour coder et synchroniser sur GitHub</h4>
+                        <p>o Installation <a href="https://gitforwindows.org/" style="text-decoration: none"; target="_blank">Git Bash.</a><br> 
+                           o Installation de Git sur vscode.
                         </p>
                         
                     </div>    
@@ -231,19 +232,19 @@
                 <div class="year">Déployer</div>
                 <div class="left">
                     <div class="content">
-                        <h3>Partie Git </h3>
+                        <h3>Partie Git</h3>
                         <h4>initialisation d’un répértoire local</h4>
                         <p>$ git config --global user.name a.taha91@hotmail.com
-                           <br>$ git clone https://github.com/soukram/Projet_Groupe4.git 
-                           <br>$ cd Projet_Groupe4/
+                           <br>$ git clone https://github.com/imenediabi/aimesalpes.git 
+                           <br>$ cd aimesalpes/
                            <br>$ git init
-                           <br>$ nano index.html
+                           <br>$ mkdir html conf.d
+                           <br>$ touch conf.d/default.conf Dockerfile
                            <br>$ git add .
                            <br>$ git commit -m "premier"
                            <br>$ git status
                            <br>$ git push origin main
                         </p>
-                        
                     </div>    
                 </div>
 
@@ -259,40 +260,46 @@
                            <br>ubuser@ub-srv-2:~$ cp -r /home/ahmad/conf.d/ .
                             
                            <br><span style="font-weight: 700; color: black;">o Création le fichier Dockerfile</span>
-                            <br>cat <<EOF > Dockerfile
-                            <br>>FROM nginx:latest
-                            <br>>ADD html/ /usr/share/nginx/html
-                            <br>>ADD conf.d/default.conf /etc/nginx/conf.d
-                            <br>>EOF
+                           <br>cat << EOF > Dockerfile
+                           <br>>FROM nginx:latest
+                           <br>>ADD html/ /usr/share/nginx/html
+                           <br>>ADD conf.d/default.conf /etc/nginx/conf.d
+                           <br>>EOF
                             
-                            <br><span style="font-weight: 700; color: black;">o Creation l'image</span>
-                            <br>docker images
-                            <br>docker build -t registryaimes.azurecr.io/groupeaimes:1.2 .
-                            <br>docker images
+                           <br><span style="font-weight: 700; color: black;">o Creation l'image</span>
+                           <br>docker images
+                           <br>docker build -t registryaimes.azurecr.io/groupeaimes:1.0 .
+                           <br>docker images
                             
-                            <br><span style="font-weight: 700; color: black;">o Créer un conteneur</span>
-                            <br>run -d -p 80:80 --name aimes registryaimes.azurecr.io/groupeaimes:1.2
+                           <br><span style="font-weight: 700; color: black;">o Créer un conteneur</span>
+                           <br>run -d -p 80:80 --name aimes registryaimes.azurecr.io/groupeaimes:0.0
                             
-                            <br><span style="font-weight: 700; color: black;">o Se connecter à Azure</span>
-                            <br>docker login registryaimes.azurecr.io
+                           <br><span style="font-weight: 700; color: black;">o Se connecter à Azure</span>
+                           <br>docker login registryaimes.azurecr.io
                             
-                            <br><span style="font-weight: 700; color: black;">o Push l'image</span>
-                            <br>docker push registryaimes.azurecr.io/groupeaimes:1.2
-                            
-                            
-                            </p>
-                        
+                           <br><span style="font-weight: 700; color: black;">o Push l'image</span>
+                           <br>docker push registryaimes.azurecr.io/groupeaimes:0.0
+                        </p>
                     </div>    
                 </div>
 
                 <div class="clearfix"></div>
-                <div class="year">Tester</div>
+                <div class="year">Automatisation</div>
                 <div class="right">
                     <div class="content">
-                        <h3>Tester</h3>
-                        <h4>Test1</h4>
-                        <p>...</p>
-                    </div>    
+                        <h3>Automatisation</h3>
+                        <h4>Lier le contenu web entre GitHub et Azure</h4>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="right">
+                    <div class="content">
+                        <h3>Vérification de fonctionnement</h3>
+                        <h4>Faire actualiser dans Azure... puis tester le <a href="https://webappaimes.azurewebsites.net/" style="text-decoration: none"; target="_blank">Lien</a></h4>
+                        <p></p>
+                    </div>
                 </div>
             </div>
         </div>
